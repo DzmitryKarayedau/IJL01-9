@@ -1,5 +1,6 @@
 package com.emerline.ijl01_9;
 
+import com.emerline.ijl01_9.exception.EmptyArgumentException;
 import com.emerline.ijl01_9.utils.StringFilter;
 
 import java.util.Scanner;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 public class Main {
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws EmptyArgumentException {
 
         Scanner in = new Scanner(System.in);
         StringFilter stringFilter = new StringFilter();
@@ -18,7 +19,11 @@ public class Main {
         do {
             System.out.print("Input searching string: ");
             inputString = in.nextLine();
-            stringFilter.addArgument(inputString);
+            try {
+                stringFilter.addArgument(inputString);
+            } catch (EmptyArgumentException e) {
+                System.err.println("Wrong argument");
+            }
             isArgumentIntroduceEnded = isNextStringNeeded();
         }
         while (!isArgumentIntroduceEnded);
