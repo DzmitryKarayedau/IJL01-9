@@ -1,3 +1,7 @@
+package com.emerline.ijl01_9;
+
+import com.emerline.ijl01_9.utils.StringFilter;
+
 import java.util.Scanner;
 
 public class Main {
