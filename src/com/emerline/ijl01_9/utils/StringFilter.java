@@ -10,15 +10,19 @@ import java.util.regex.Pattern;
  * Created by Dima on 16.04.2017.
  */
 public class StringFilter {
+
     private HashSet<String> arguments = new HashSet<String>();
 
-    public void addArgument(String argument) throws EmptyArgumentException {
+    public StringFilter(HashSet<String> arguments) throws EmptyArgumentException {
+        for (String argument : arguments) {
+            validateArgument(argument);
+        }
+        this.arguments = arguments;
+    }
+
+    private void validateArgument(String argument) throws EmptyArgumentException {
         if ((argument.equals("")) | (argument.equals(null))) {
             throw new EmptyArgumentException("Empty argument");
-        } else {
-            if (!arguments.contains(argument)) {
-                arguments.add(argument);
-            }
         }
     }
 
